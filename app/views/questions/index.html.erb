@@ -36,8 +36,7 @@
           <% question.answers.each_with_index do |answer, index| %>
               <li class="list-group-item active"><%= answer.response %></li>
               <span><i>Posted by: </i><%= answer.user.name%></span>
-              <%= link_to image_tag("like.jpg", class:"like"),controller: :likes,
-                          action: :create, data: answer.id %>:<%=answer.votes%>
+              <%= link_to image_tag("like.jpg", class:"like"), likes_path(data: answer.id), method: :post %>:<%=answer.votes%>
               <% if answer.confirmed%>
                   <%= image_tag("cake.jpg", class:"like") %>
               <% end %>

@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  def index
+  def create
     @like = Answer.find(params['data'])
     query = Question.find(@like.question_id)
     if query.user_id == current_user.id
