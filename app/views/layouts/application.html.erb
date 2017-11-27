@@ -25,6 +25,11 @@
     </div>
   </nav>
   <%= image_tag('swap.png', class:"logo")%>
+  <div class="container">
+    <% flash.each do |key, value| %>
+        <li class="list-group-item list-group-item-info"><%= value %></li>
+    <% end %>
+  </div>
   <% if user_signed_in? %>
       <h5>Welcome, <%=current_user.name %></h5>
   <% end %>

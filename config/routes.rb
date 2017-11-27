@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :questions, only: [:index, :create, :create_answer]
+  resources :questions
   resources :likes, only: [:index, :create]
   devise_for :users, controllers: {registrations: "registrations"}
 
