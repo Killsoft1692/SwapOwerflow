@@ -24,7 +24,7 @@
     <div class="notice">
       <%= flash.notice%>
     </div>
-    <% @questions.each_with_index do |question, index| %>
+    <% @questions.each.with_index(1) do |question, index| %>
         <li class="list-group-item list-group-item-success">#<%= index %>
           <%= link_to question.title, question_path(id: question.id) %></li>
         <span><i>Posted by: <b><%= question.user.name %></b> at <%= question.created_at.to_formatted_s(:short) %></i></span>

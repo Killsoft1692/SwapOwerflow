@@ -16,4 +16,5 @@ class Answer < ApplicationRecord
   validates_presence_of :response
   belongs_to :question
   belongs_to :user
+  has_many :votes, dependent: :destroy
 end
