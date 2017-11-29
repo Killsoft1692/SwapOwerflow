@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(params.require(:question).permit(:title, :body))
     @question.user = current_user
+    @question.image = params[:question][:image]
     if @question.save
     else
       flash[:error] = 'This fields are required'
@@ -35,6 +36,7 @@ class QuestionsController < ApplicationController
     @answer = Answer.new(params.require(:answer).permit(:response, :question_id))
     @answer.user = current_user
     @answer.question_id=params[:question_id]
+    @answer.image = params[:answer][:image]
     if @answer.save
     else
       flash[:error] = 'This field is required'

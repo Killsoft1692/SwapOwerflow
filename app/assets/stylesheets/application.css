@@ -24,3 +24,7 @@
     width: 100%;
 
 }
+.thumb{
+    width: 256px;
+    position: relative;
+}

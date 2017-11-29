@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  response    :text
-#  votes       :integer          default(0)
+#  likes       :integer          default(0)
 #  confirmed   :boolean
 #  question_id :integer
 #  user_id     :integer

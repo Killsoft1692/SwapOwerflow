@@ -13,6 +13,9 @@
                 <div class="form-group floating-label-form-group controls">
                   <p><%= f.text_area :body,  class: "form-control", placeholder:"Question" %></p>
                 </div>
+                <div class="form-group floating-label-form-group controls">
+                  <p><%= f.file_field :image %></p>
+                </div>
               </div>
               <p><%= f.submit class: "btn btn-success btn-sm"%></p>
               </div>
@@ -25,12 +28,14 @@
       <%= flash.notice%>
     </div>
     <% @questions.each.with_index(1) do |question, index| %>
-        <li class="list-group-item list-group-item-success">#<%= index %>
+        <li class="list-group-item ">#<%= index %>
           <%= link_to question.title, question_path(id: question.id) %></li>
+          <li class="list-group-item list-group-item-success"><%= truncate(question.body) { link_to "More", question_path(id: question.id) } %></li>
         <span><i>Posted by: <b><%= question.user.name %></b> at <%= question.created_at.to_formatted_s(:short) %></i></span>
         <br>
   <% end %>
   </ul>
+  <%= paginate @questions %>
   </div>
-<%= paginate @questions %>
+
 </div>

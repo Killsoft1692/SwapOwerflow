@@ -60,3 +60,6 @@ gem 'annotate'
 
 # Make it with pagination
 gem 'kaminari'
+
+# Add image to Question
+gem 'carrierwave', '~> 1.0'
