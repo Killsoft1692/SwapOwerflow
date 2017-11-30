@@ -4,6 +4,7 @@ class QuestionsController < ApplicationController
   def index
     @question = Question.new
     @questions = Question.all.reverse_order.page(params[:page]).per(10)
+    # @questions = Question.hot_likes.page(params[:page]).per(10)
   end
 
   def create
@@ -20,6 +21,12 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answer = Answer.new
+    if cookies[:alert].present?
+      cookies[:alert] = cookies[:alert].to_i + 1
+    else
+      cookies[:alert] = 1
+    end
+
   end
 
   def destroy
@@ -42,6 +49,10 @@ class QuestionsController < ApplicationController
       flash[:error] = 'This field is required'
     end
     redirect_to question_path(params[:question_id])
+  end
+
+  def rated
+    @questions = Question.hot_likes.page(params[:page]).per(10)
   end
 
 end

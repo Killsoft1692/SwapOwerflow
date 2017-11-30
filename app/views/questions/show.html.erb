@@ -1,6 +1,11 @@
 <div class="container">
 
   <div class="span3">
+    <% if cookies[:alert] > 3 and not current_user %>
+      <script>
+        alert("Please login to have more fun!=)")
+      </script>
+        <% end %>
       <li class="list-group-item active"><%= @question.title %> <%=link_to image_tag("del.png", class: "like"), question_path(id: @question.id), method: :delete %></li>
       <li class="list-group-item list-group-item-success"><%= @question.body %></li>
       <p><%=link_to image_tag(@question.image_url, class: 'thumb'), @question.image_url, target: "_blank" if @question.image? %></p>

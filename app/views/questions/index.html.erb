@@ -32,7 +32,7 @@
           <%= link_to question.title, question_path(id: question.id) %></li>
           <li class="list-group-item list-group-item-success"><%= truncate(question.body) { link_to "More", question_path(id: question.id) } %></li>
         <span><i>Posted by: <b><%= question.user.name %></b> at <%= question.created_at.to_formatted_s(:short) %></i></span>
-        <br>
+        <hr>
   <% end %>
   </ul>
   <%= paginate @questions %>

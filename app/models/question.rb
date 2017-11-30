@@ -15,4 +15,6 @@ class Question < ApplicationRecord
   validates_presence_of :title, :body
   has_many :answers, dependent: :destroy
   belongs_to :user
+
+  scope :hot_likes, -> {joins(:answers).where('answers.likes > ?', 0 ).order('likes DESC')}
 end
